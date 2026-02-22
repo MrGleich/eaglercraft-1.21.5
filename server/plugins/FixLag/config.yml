@@ -1,0 +1,114 @@
+# List of entity types to delete (case-insensitive, use uppercase Bukkit EntityType names)
+entities-to-delete:
+- ITEM
+- ARROW
+- FIREWORK_ROCKET
+- BOAT
+- MINECART
+- BAT
+# Add more entity types as needed
+
+# Whether to ignore items that have been renamed (e.g. via Anvil or Name Tag).
+# If set to true, entities with custom names will NOT be deleted.
+ignore-custom-named-items: true
+
+# Interval in seconds between entity deletion checks
+deletion-interval-seconds: 180 # 3 min
+
+# Enable sending a warning message to players before entity deletion
+enable-warning: true
+
+# Type of notification: CHAT or ACTION_BAR
+notification-type: CHAT
+
+# Message to send to players before entity deletion.
+# Use %time% as a placeholder for the warning time in seconds.
+# You can use color codes (e.g., &e for yellow, &6 for gold).
+warning-message: '&eEntities will be cleared in &6%time% &eseconds.'
+
+# Time in seconds before deletion to send the warning message
+warning-time-seconds: 15
+
+# Message to broadcast to all players after entities are cleaned up.
+# Use %count% as a placeholder for the number of deleted entities.
+# You can use color codes (e.g., &a for light green, &2 for dark green).
+cleanup-broadcast-message: '&aCleaned up &2%count% &aunnecessary entities.'
+
+# Configuration for overload detection
+overload-detection:
+  # Radius in blocks to check for targeted entities around a player
+  radius: 50
+  # Number of targeted entities within the radius that triggers a warning
+  critical-entity-count: 65
+  # Interval in seconds to check for entity overloads
+  check-interval-seconds: 90
+
+# Configuration for Mob Stacking
+mob-stacking:
+  enabled: false
+  radius: 10
+  max-stack-size: 50
+  # List of entity types to stack (use uppercase Bukkit EntityType names)
+  allowed-entities:
+  - ZOMBIE
+  - SKELETON
+  - CREEPER
+  - SPIDER
+  - COW
+  - SHEEP
+  - PIG
+  - CHICKEN
+  # Display format for the stack name.
+  # %type% - Entity type name (capitalized)
+  # %count% - Stack size
+  name-format: '&e%type% &6x%count%'
+
+# Smart Clear: Automatically clears entities when TPS (Ticks Per Second) drops below a defined threshold.
+# This acts as a reactive lag prevention measure, triggering entity cleanup when the server is struggling.
+smart-clear:
+  # Enable or disable the Smart Clear feature.
+  enabled: true
+  
+  # The TPS (Ticks Per Second) threshold. If the server's 1-minute average TPS drops below this value,
+  # the Smart Clear will be triggered (assuming cooldown is respected).
+  # A healthy server runs at 20.0 TPS. Values like 16.0 - 18.0 are common.
+  tps-threshold: 16.0
+  
+  # How often (in seconds) the plugin will check the server's current TPS.
+  # A lower value means faster reaction to lag spikes, but slightly more frequent checks.
+  check-interval-seconds: 10
+  
+  # The cooldown period (in seconds) after a Smart Clear has been triggered.
+  # The plugin will not trigger another Smart Clear until this cooldown has passed,
+  # even if the TPS remains below the threshold. This prevents excessive cleanups.
+  # Example: 300 seconds = 5 minutes.
+  cooldown-seconds: 300
+
+# Explosion Optimization: Reduces lag from TNT and explosions.
+explosion-optimization:
+  enabled: true
+  # TPS threshold to activate optimization.
+  tps-threshold: 16.0
+  # Whether to disable block item drops from explosions when optimized.
+  disable-block-drops: true
+  # Maximum blocks an explosion can destroy. 0 to disable limit.
+  max-blocks-limit: 100
+
+# Dynamic Distance: Adjusts view and simulation distance based on server performance.
+# Requires Minecraft 1.18+ for simulation distance adjustment.
+dynamic-distance:
+  enabled: false
+  # TPS threshold to decrease distance.
+  tps-low-threshold: 17.0
+  # TPS threshold to increase distance (buffer to avoid flickering).
+  tps-high-threshold: 19.0
+  # Minimum and maximum view distance.
+  min-view-distance: 4
+  max-view-distance: 10
+  # Minimum and maximum simulation distance (if supported).
+  min-simulation-distance: 4
+  max-simulation-distance: 10
+  # How often (in seconds) to check and adjust distance.
+  check-interval-seconds: 60
+  # Whether to notify players with 'fixlag.notify.distance' permission when distance changes.
+  notify-admins: true

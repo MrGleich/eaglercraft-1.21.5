@@ -1,0 +1,16 @@
+# ╔═══════════════════════════════════════════════════════════════╗
+# ║                    RankedSMP Configuration                    ║
+# ║              Made by Lusik21556 (@lusik_2155)                 ║
+# ╚═══════════════════════════════════════════════════════════════╝
+
+# Plugin Hooks
+hooks:
+  TAB: false
+  PlaceholderAPI: false
+
+# Gameplay Settings
+gameplay:
+  keep-ranks: false  # If true, ranks cannot be stolen through PvP kills
+
+# Player ranks are stored here (automatic)
+players: {}

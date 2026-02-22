@@ -1,0 +1,106 @@
+# Use Minecraft color codes or MiniMessage color codes
+
+prefix: <#87CEEB>[<#90EE90>ꜰɪxʟᴀɢ</#90EE90>] </#87CEEB><reset>
+entity_clear_manual: <green>Manually cleared unnecessary entities...
+entity_clear_broadcast: <green>Cleaned up <dark_green>%fixlag_count% <green>unnecessary
+  entities. Use <gold>/fixlag retrieve</gold> to recover them.
+entity_clear_warning: <yellow>Entities will be cleared in <gold>%fixlag_time% <yellow>seconds.
+retrieve_command_in_cooldown: <red>You can't use this command while the items are
+  being collected.
+retrieve_command_no_items: <red>There are no items to retrieve.
+permission_denied: <red>You do not have permission to use this command.
+gc_info_header: <yellow>--- JVM Memory & GC Info ---
+server_info_header: <yellow>--- Server Information ---
+server_info_tps: '<green>TPS (Last 1m, 5m, 15m): <white>%fixlag_tps_1m%, %fixlag_tps_5m%,
+  %fixlag_tps_15m%'
+server_info_mspt: '<green>MSPT (Last 1m): <white>%fixlag_mspt_1m% ms' # Consider updating this
+server_info_mspt_5m: '<green>MSPT (Last 5m): <white>%fixlag_mspt_5m% ms' # New key
+server_info_mspt_15m: '<green>MSPT (Last 15m): <white>%fixlag_mspt_15m% ms' # New key
+server_info_ram: '<green>RAM Usage: <white>%fixlag_used_ram%MB / %fixlag_total_ram%MB
+  [%fixlag_ram_percentage%]'
+server_info_cpu: '<green>CPU Usage: <white>%fixlag_cpu_usage%'
+server_info_ping: '<green>Average Ping: <white>%fixlag_avg_ping% ms'
+server_info_world_header: <aqua>World Stats:</aqua>
+server_info_world_entry: ' <gray>- <gold>%fixlag_world_name%<gray>: <white>%fixlag_world_chunks%
+  Chunks, %fixlag_world_entities% Entities'
+update_available: '<yellow>A new version of FixLag is available: <gold>%fixlag_latest_version%'
+update_current_version: '<yellow>You are currently using version: <gold>%fixlag_current_version%'
+update_check_failed: <red>Could not check for updates.
+update_check_error: '<red>Error checking for updates: %fixlag_error%.'
+log_entity_deleted: Deleted %fixlag_count% unnecessary entities.
+log_update_available: 'A new version of FixLag is available: %fixlag_version%. Download
+  <hover:show_text:''<#90EE90>Click to download from the official Modrinth project</#90EE90>''><click:open_url:''https://modrinth.com/plugin/fixlag/''>here</click></hover>'
+log_update_uptodate: FixLag is up to date.
+log_update_check_failed: Could not check for updates.
+
+# New Messages
+command_player_only: <red>This command can only be run by a player.
+command_reload_success: <green>Configuration and messages reloaded successfully.
+overload_warning: <red>Warning! High number of targeted entities (<count>) detected
+  near player <player>.
+
+# Performance Info Bodies
+gc_info_body: |
+  <aqua>Garbage Collector: <green><gc_type></green></aqua>
+  <aqua>Heap Memory:</aqua> Used=<green><used_heap>MB</green>, Free=<green><free_heap>MB</green>, Max=<green><max_heap>MB</green>
+  <aqua>Non-Heap Memory:</aqua> Used=<green><used_non_heap>MB</green>, Free=<green><free_non_heap></green>, Max=<green><max_non_heap></green>
+  <aqua>GC Stats:</aqua>
+  <gc_stats>
+server_info_body: |
+  <aqua>JVM Version: <green><jvm_version></green></aqua>
+  <aqua>JVM Name: <green><jvm_name></green></aqua>
+  <aqua>OS Architecture: <green><os_arch></green></aqua>
+  <aqua>OS Name: <green><os_name></green></aqua>
+  %fixlag_tps_line%
+  %fixlag_ram_line%
+  %fixlag_cpu_line%
+# Logs
+log_memory_stats: 'Memory Stats - Heap: Used=<used_heap>MB, Free=<free_heap>MB, Max=<max_heap>MB
+  | Non-Heap: Used=<used_non_heap>MB, Free=<free_non_heap>, Max=<max_non_heap> | GC:
+  <gc_stats>'
+log_plugin_enabled: FixLag plugin has been enabled!
+log_plugin_disabled: FixLag plugin has been disabled!
+log_plugin_goodbye: Goodbye!
+log_smart_clear_triggered: TPS is low (<tps>). Triggering smart clear.
+log_config_invalid_deletion_interval: Deletion interval is invalid! Using default
+  value of 60 seconds.
+log_config_invalid_warning_time: Warning time is invalid! Using default value of 5
+  seconds.
+log_config_invalid_overload_interval: Overload check interval is invalid! Using default
+  value of 30 seconds.
+log_config_invalid_update_interval: Update check interval is invalid! Using default
+  value of 1 day.
+
+# Chunk Analysis
+chunk_analysis_started: <yellow>Analyzing chunks... This may take a moment.
+chunk_analysis_header: <yellow>--- Top 10 Chunks by Entity Count ---
+chunk_analysis_no_data: <red>No loaded chunks with entities found.
+chunk_analysis_entry: ' <gray>- <gold><world> <gray>(<x>, <z>): <green><count> Entities'
+
+# v3.8 New Messages
+distance_decreased: <yellow>Server performance is low. View distance decreased to
+  <view> and simulation distance to <sim>.
+distance_increased: <green>Server performance has improved. View distance increased
+  to <view> and simulation distance to <sim>.
+
+# v3.8 New Logs
+log_explosion_optimized: 'Explosion at <world> <x>, <y>, <z> was optimized (TPS: <tps>).
+  Reduced block destruction to <count> and disabled drops: <drops>.'
+log_distance_changed: 'Dynamic Distance: Adjusted distance in world <world> due to
+  TPS <tps>. View: <view>, Sim: <sim>.'
+
+# Optimization Config
+optimize_config_header: <yellow>--- Optimized Configuration Proposal ---
+optimize_config_entry: ' <gray>- <gold>%file%<gray>: <aqua>%key% <red>%old% <gray>->
+  <green>%new%'
+optimize_config_footer: '<gray>Click an action: <click:run_command:''/fixlag optimizeconfig
+  accept''><hover:show_text:''<green>Apply changes to original files''><green>[Accept]</green></hover></click>
+  <click:run_command:''/fixlag optimizeconfig save-new''><hover:show_text:''<gold>Save
+  to new *.changed files''><gold>[Write to file]</gold></hover></click> <click:run_command:''/fixlag
+  optimizeconfig reject''><hover:show_text:''<red>Discard all changes''><red>[Reject]</red></hover></click>'
+optimize_config_no_changes: <green>Your configuration is already optimized!
+optimize_config_no_pending: <red>No pending configuration changes found. Run /fixlag
+  optimizeconfig first.
+optimize_config_applied: <green>Configuration changes have been applied successfully!
+optimize_config_rejected: <yellow>Configuration changes have been rejected.
+optimize_config_error: '<red>An error occurred while saving the configuration: %error%'
